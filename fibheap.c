@@ -25,7 +25,7 @@ Heap *fibHeapInsert(Heap *hp, int key, int value)
 	N->value = value;
 	N->mark = 0;
 
-	fibHeapAddNodeToRootList(N, hp);
+	fibHeapAddNodeToRootList(N, hp->min);
 
 	if (hp->min == NULL || N->key < hp->min->key) {
 		hp->min = N;
@@ -35,22 +35,20 @@ Heap *fibHeapInsert(Heap *hp, int key, int value)
 	return hp;
 }
 
-void fibHeapAddNodeToRootList(Node *N, Heap *hp)
+void fibHeapAddNodeToRootList(Node *node, Node *min)
 {
-	if (hp->min == NULL) {
+	if (min == NULL)
 		return;
-	}
-
-	if (hp->min->left == hp->min) {
-		hp->min->left = N;
-		hp->min->right = N;
-		N->right = hp->min;
-		N->left = hp->min;
+	if (min->left == min) {
+		min->left = node;
+		min->right = node;
+		node->right = min;
+		node->left = min;
 	} else {
-		N->right = hp->min;
-		N->left = hp->min->left;
-		hp->min->left->right = N;
-		hp->min->left = N;
+		node->left = min->left;
+		node->left->right = node;
+		min->left = node;
+		node->right = min;
 	}
 }
 
@@ -111,7 +109,7 @@ Node *fibHeapDeleteMin(Heap *hp)
 
 	Node *tmp = min->child;
 	while (tmp) {
-		fibHeapAddNodeToRootList(tmp, hp);
+		fibHeapAddNodeToRootList(tmp, hp->min);
 		tmp->parent = NULL;
 		if (tmp->left == tmp) {
 			break;

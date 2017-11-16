@@ -19,14 +19,14 @@ typedef struct {
 
 Heap *createHeap();
 Heap *fibHeapInsert(Heap */*heap*/, int /*key*/, int /*value*/);
-void fibHeapAddNodeToRootList(Node */*node*/, Heap */*heap*/);
+void fibHeapAddNodeToRootList(Node */*node*/, Node */*min*/);
 Node *fibHeapMin(Heap */*heap*/);
 void print(Heap */*heap*/);
 Heap *mergeHeaps(Heap */*heap1*/, Heap */*heap2*/);
 void fibHeapRemoveNodeFromRootList(Node */*node*/);
 Node *fibHeapDeleteMin(Heap */*heap*/);
 void fibheapUnionList(Node* /*node*/, Node*  /*node*/);
-void FibHeapConsolidate(Heap */*heap*/);
+Heap *FibHeapConsolidate(Heap */*heap*/);
 void fibheapLink(Node* /*node*/, Node* /*child*/);
 int fibHeapMaxDegree(Heap* /*heap*/);
 void fibheapDecreaseKey(Heap* /*heap*/, Node* /*node*/, int /*key*/);

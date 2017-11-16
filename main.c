@@ -3,7 +3,7 @@
 
 int main()
 {
-	heap *root = createHeap();
+	Heap *root = createHeap();
 	root = fibHeapInsert(root, 5, 5);
 	root = fibHeapInsert(root, 2, 2);
 	root = fibHeapInsert(root, 3, 3);
@@ -12,7 +12,7 @@ int main()
 
 	printf("\n");
 
-	heap *root2 = createHeap();
+	Heap *root2 = createHeap();
 	root2 = fibHeapInsert(root2, 1, 1);
 	root2 = fibHeapInsert(root2, 4, 4);
 	root2 = fibHeapInsert(root2, 7, 7);
@@ -21,7 +21,7 @@ int main()
 
 	printf("\n");
 
-	heap *root3 = mergeHeaps(root, root2);
+	Heap *root3 = mergeHeaps(root, root2);
 	print(root3);
 
 	return 0;
