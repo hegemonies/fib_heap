@@ -1,3 +1,3 @@
 all:
-	gcc -Wall *.c -o main -lm
+	gcc -std=c99 -Wall *.c -o main -lm
 	./main
